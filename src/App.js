@@ -1,28 +1,43 @@
-import logo from './logo.svg';
 import React, { Component } from 'react';
 import './App.css';
 
 class App extends Component {
-  state = {
-    name: "Ali",
-    company: "YasNet"
+  constructor() {
+    super();
+    this.state = {
+      monters: [
+        {
+          id: '1212a',
+          name: 'Linda'
+        },
+        {
+          id: '1213b',
+          name: 'Frank'
+        },
+        {
+          id: '1214c',
+          name: 'Jack'
+        },
+        {
+          id: '1215d',
+          name: 'Daxty'
+        }
+      ]
+    };
   }
 
-  handlePTag = () => {
-    this.setState({ name: "Yaser", company: "Yaser-Work.Net" });
-  }
   render() {
     return (
       <div className='App'>
-        <header className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <p>
-            Hi {this.state.name}, i work in {this.state.company}
-          </p>
-          <button onClick={this.handlePTag}>
-            Click!
-          </button>
-        </header>
+        {
+          this.state.monters.map((monster) => {
+            return (
+              <div key={monster.id}>
+                <h1>{monster.name}</h1>
+              </div>
+            );
+          })
+        }
       </div>
     );
   }
