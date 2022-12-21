@@ -5,7 +5,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      monsters: []
+      monsters: [],
+      serachField: ''
     };
   }
   componentDidMount() {
@@ -20,14 +21,29 @@ class App extends Component {
   }
 
   render() {
+    const filterMonsters = this.state.monsters.filter((monster) => {
+      return monster.name.toLocaleLowerCase().includes(this.state.serachField);
+    });
     return (
       <div className='App'>
+        <input
+          style={{ width: '50%', height: '40px', borderRadius: '12px', marginTop: '32px', padding: '0px 16px' }}
+          placeholder='Search Monster Name'
+          className='search-box'
+          type={'search'}
+          onChange={(event) => {
+            const serachField = event.target.value.toLocaleLowerCase();
+            this.setState(() => {
+              return { serachField };
+            })
+          }}
+        />
         {
-          this.state.monsters.map((monster) => {
+          filterMonsters.map((monster) => {
             return (
               <div key={monster.id} style={{ display: 'flex', alignItems: 'center', marginTop: '16px' }}>
                 <h3 style={{ margin: '0px 4px 0px 24px', fontWeight: '300' }}>{monster.id + ' - '}</h3>
-                <h2 style={{ margin: '0px 4px 0px 0px', fontWeight: '500' }}>Name: </h2>
+                <h3 style={{ margin: '0px 4px 0px 0px', fontWeight: '500' }}>Name: </h3>
                 <h3 style={{ margin: '24px 8px', fontWeight: '350' }}>{monster.name}</h3>
               </div>
             );
