@@ -1,8 +1,12 @@
-.search-box{
-    width: 40%;
-    height: 48px;
-    border-radius: 12px;
-    margin-top: 32px;
-    padding: 8px 24px;
-    border: none;
-  }
+.search-box {
+  width: 40%;
+  height: 56px;
+  border-radius: 12px;
+  padding: 8px 24px;
+  border: none;
+  box-shadow: linear-gradient(
+    to left,
+    rgba(7,27,82,1) 100%,
+    rgba(0,128,128,1) 0%)
+     0px 25px 50px -12px;
+}
